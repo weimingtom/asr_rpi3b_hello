@@ -1,0 +1,91 @@
+Hit:1 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian stretch InRelease
+Hit:2 http://mirrors.tuna.tsinghua.edu.cn/raspberrypi stretch InRelease
+Reading package lists... Done                      
+Building dependency tree       
+Reading state information... Done
+324 packages can be upgraded. Run 'apt list --upgradable' to see them.
+Reading package lists... Done
+Building dependency tree        
+Reading state information... Done
+raspberrypi-kernel is already the newest version (1.20190819~stretch-1).
+raspberrypi-kernel set to manually installed.
+raspberrypi-kernel-headers is already the newest version (1.20190819~stretch-1).
+0 upgraded, 0 newly installed, 0 to remove and 324 not upgraded.
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+i2c-tools is already the newest version (3.1.2-3).
+i2c-tools set to manually installed.
+Suggested packages:
+  python3-apport menu git-daemon-run | git-daemon-sysvinit git-doc git-el
+  git-email git-gui gitk gitweb git-arch git-cvs git-mediawiki git-svn
+The following NEW packages will be installed:
+  dkms libasound2-plugins libspeexdsp1
+The following packages will be upgraded:
+  git
+1 upgraded, 3 newly installed, 0 to remove and 323 not upgraded.
+Need to get 3,579 kB of archives.
+After this operation, 703 kB of additional disk space will be used.
+Get:1 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian stretch/main armhf git armhf 1:2.11.0-3+deb9u5 [3,389 kB]
+Get:2 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian stretch/main armhf libspeexdsp1 armhf 1.2~rc1.2-1 [42.9 kB]
+Get:3 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian stretch/main armhf dkms all 2.3-2 [74.8 kB]
+Get:4 http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian stretch/main armhf libasound2-plugins armhf 1.1.1-1 [72.9 kB]
+Fetched 3,579 kB in 4s (746 kB/s)        
+apt-listchanges: Reading changelogs...
+(Reading database ... 158572 files and directories currently installed.)
+Preparing to unpack .../git_1%3a2.11.0-3+deb9u5_armhf.deb ...
+Unpacking git (1:2.11.0-3+deb9u5) over (1:2.11.0-3+deb9u2) ...
+Selecting previously unselected package libspeexdsp1:armhf.
+Preparing to unpack .../libspeexdsp1_1.2~rc1.2-1_armhf.deb ...
+Unpacking libspeexdsp1:armhf (1.2~rc1.2-1) ...
+Selecting previously unselected package dkms.
+Preparing to unpack .../archives/dkms_2.3-2_all.deb ...
+Unpacking dkms (2.3-2) ...
+Selecting previously unselected package libasound2-plugins:armhf.
+Preparing to unpack .../libasound2-plugins_1.1.1-1_armhf.deb ...
+Unpacking libasound2-plugins:armhf (1.1.1-1) ...
+Setting up dkms (2.3-2) ...
+Processing triggers for man-db (2.7.6.1-2) ...
+Setting up git (1:2.11.0-3+deb9u5) ...
+Setting up libspeexdsp1:armhf (1.2~rc1.2-1) ...
+Setting up libasound2-plugins:armhf (1.1.1-1) ...
+
+Creating symlink /var/lib/dkms/seeed-voicecard/0.3/source ->
+                 /usr/src/seeed-voicecard-0.3
+
+DKMS: add completed.
+
+Kernel preparation unnecessary for this kernel.  Skipping...
+
+Building module:
+cleaning build area....
+make -j4 KERNELRELEASE=4.19.66+ -C /lib/modules/4.19.66+/build M=/var/lib/dkms/seeed-voicecard/0.3/build.......(bad exit status: 2)
+Error! Bad return status for module build on kernel: 4.19.66+ (armv7l)
+Consult /var/lib/dkms/seeed-voicecard/0.3/build/make.log for more information.
+
+Kernel preparation unnecessary for this kernel.  Skipping...
+
+Building module:
+cleaning build area....
+make -j4 KERNELRELEASE=4.19.66-v7+ -C /lib/modules/4.19.66-v7+/build M=/var/lib/dkms/seeed-voicecard/0.3/build.......(bad exit status: 2)
+Error! Bad return status for module build on kernel: 4.19.66-v7+ (armv7l)
+Consult /var/lib/dkms/seeed-voicecard/0.3/build/make.log for more information.
+setup git config
+git init
+Initialized empty Git repository in /etc/voicecard/.git/
+git add --all
+git commit -m "origin configures"
+[master (root-commit) e656c1e] origin configures
+ 7 files changed, 1476 insertions(+)
+ create mode 100644 ac108_6mic.state
+ create mode 100644 ac108_asound.state
+ create mode 100644 asound_2mic.conf
+ create mode 100644 asound_4mic.conf
+ create mode 100644 asound_6mic.conf
+ create mode 100644 dkms.conf
+ create mode 100644 wm8960_asound.state
+Created symlink /etc/systemd/system/sysinit.target.wants/seeed-voicecard.service → /lib/systemd/system/seeed-voicecard.service.
+------------------------------------------------------
+Please reboot your raspberry pi to apply all settings
+Enjoy!
+------------------------------------------------------
