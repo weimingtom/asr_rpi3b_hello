@@ -1,3 +1,6 @@
+(Install 2018-04-18-raspbian-stretch.img, 
+with balenaEtcher, DiskGenius, SDFormatter, putty and Win32DiskImager)    
+
 -----(if online)  
 
 (Open raspbian desktop WIFI, with password)  
