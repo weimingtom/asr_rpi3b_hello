@@ -13,6 +13,7 @@ from urllib2 import Request, urlopen, URLError, HTTPError
 
 from pixels import Pixels
 import time
+import vadSound
 
 RESPEAKER_RATE = 16000
 RESPEAKER_CHANNELS = 1
@@ -59,7 +60,31 @@ def record():
     stream.stop_stream()
     print("start to send to baidu")
     # audio_data should be raw_data
+    print("server_api data len:", len(frames) * CHUNK)
     text = baidu.server_api(generator_list(frames))
+    if text:
+        try:
+            text = json.loads(text)
+            for t in text['result']:
+                print(t)
+                return(t)
+        except KeyError: 
+            return("get nothing")
+    else:
+        print("get nothing")
+        return("get nothing")
+
+def record_sound():
+    print("* recording")
+    raw_data = vadSound.record_sound()
+    print("* done recording")
+    print("start to send to baidu")
+    print("server_api data len:", len(raw_data))
+    # audio_data should be raw_data 
+    data = generator_list(raw_data)
+    print("start to send to baidu 2")
+    text = baidu.server_api(data)
+    print("start to send to baidu 3")
     if text:
         try:
             text = json.loads(text)
@@ -76,7 +101,7 @@ def sigint_handler(signum, frame):
     stream.stop_stream()
     stream.close()
     p.terminate()
-    print 'catched interrupt signal!'
+    print("catched interrupt signal!")
     sys.exit(0)
 
 # 注册ctrl-c中断
@@ -87,7 +112,8 @@ pixels.off()
 
 while True:
     try:
-        outputtext = record()
+        #outputtext = record()
+        outputtext = record_sound()
         if (u'开风扇') in outputtext:
             GPIO.output(13, GPIO.LOW) 
             GPIO.output(12, GPIO.HIGH) 

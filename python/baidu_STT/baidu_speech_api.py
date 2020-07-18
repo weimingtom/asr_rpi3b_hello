@@ -56,26 +56,33 @@ class BaiduVoiceApi:
         self.auth()
 
         if isinstance(audio_data, types.GeneratorType):
+            print("server_api v1");
             def generate(audio):
                 yield self.get_wav_header()
                 for a in audio:
+                    # print(len(a)) #2048
                     yield a
 
             data = generate(audio_data)
         else:
+            print("server_api v2");
             data = self.to_wav(audio_data)
 
+        print("server_api v3");
         headers = {
             "Content-Type": "audio/wav;rate=16000",
         }
 
         url = "http://vop.baidu.com/server_api?lan=zh&cuid=HG:er:rt:7f:eD&token=" + self.access_token
-        response = self.session.post(url,headers=headers, data=data)
+        response = self.session.post(url,headers=headers, data=data) #, timeout=0.5)
 
+        print("server_api v4");
+        
         if response.status_code != 200:
             raise IOError("http request error with status code {}".format(response.status_code))
 
         result = response.content
+        print(result)
 
         return result
 
