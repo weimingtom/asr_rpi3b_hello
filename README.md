@@ -16,3 +16,4 @@ https://console.bce.baidu.com/ai/?fromai=1#/ai/speech/app/list
 * https://ai.baidu.com/ai-doc/SPEECH/xk38lxq46  
 * https://ai.baidu.com/ai-doc/SPEECH/ek38lxj1u  
 documents, 相关文档  
+* Modify python/baidu_STT/Smart_fan.py  
